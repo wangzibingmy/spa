@@ -37,28 +37,27 @@ h.onblur=function(){
 
 btn.onclick=function(){
   if(w.value==""){      
-          kk.innerHTML="请填写必要信息";
-          z.value="";
-          m.value="";
-                          
-  }else if(!re.test(w.value)){
-          kk.innerHTML="信息为正数格式";
-          z.value="";
-          m.value="";
-                          
-  }else if(h.value==""){     
-            gg.innerHTML="请填写必要信息";
-            z.value="";
-            m.value=""; 
-  }else if(!re.test(h.value)){
-              gg.innerHTML="信息为正数格式";
-              z.value="";
-              m.value="";
-  }else{
-              gg.innerHTML="";
-              kk.innerHTML="";
-              z.value=roundFractional((w.value)*2+(h.value)*2,1);
-              m.value=roundFractional(w.value*h.value,2);                                  
+    kk.innerHTML="请填写宽度！";         
+  }else if(w.value!==""){
+    if(!re.test(w.calue)){
+      kk.innerHTML="信息为正数格式！";
+    }else{
+      kk.innerHTML="";
+    }                                  
+  }
+  
+  if(h.value==""){     
+    gg.innerHTML="请填写高度！";
+  }else if(h.value!==""){
+    if(!re.test(h.value)){
+      gg.innerHTML="信息为正数格式";
+    }
+  }
+  if(re.test(h.value)&&re.test(w.value)){
+    gg.innerHTML="";
+    kk.innerHTML="";
+    z.value=roundFractional((w.value)*2+(h.value)*2,1);
+    m.value=roundFractional(w.value*h.value,2);         
   }
 }
 window.onload=function(){
