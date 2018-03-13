@@ -11,24 +11,26 @@ function roundFractional(x, n) {
 w.onblur=function(){
       if(w.value==""){      
             kk.innerHTML="请填写必要信息";
+            w.focus();
             z.value="";
             m.value="";
           }
       else if(!re.test(w.value)){
               kk.innerHTML="信息为正数格式";
-                  
+              w.focus();    
       }
         
 };
 h.onblur=function(){
       if(h.value==""){      
             gg.innerHTML="请填写必要信息";
+            h.focus();
             z.value="";
             m.value=""; 
           }
       else if(!re.test(h.value)){
               gg.innerHTML="信息为正数格式";
-                  
+              h.focus();    
       }
         
 };
