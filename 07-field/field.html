@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <title>计算机</title>
+</head>
+<body>
+  <form style="text-align: center;margin-top: 80px">
+    <label for="wname">宽度：</label>
+    <input type="text" name="wname" id="w" style="height: 20px;">
+    <b style="color: red">*</b><br/>
+    <span style="color: red" id="kk"></span>
+    <br/>
+    <label for="hname">高度：</label>
+    <input type="text" name="hname" id="h" style="height: 20px;">
+    <b style="color: red">*</b><br/>
+    <span style="color: red" id="gg"></span>
+    <br/>
+
+      <!-- 按钮 -->
+    <input type="button" id="btn" value="计算" style="width: 60px; height: 35px; font-size: 17px;">
+    <br/><br/>
+    <label for="zname">周长：</label>
+                                                                    <input type="text" name="zname" id="z" readonly="true" style="height: 20px;">
+                                                                        <br/><br/>
+                                                                      <label for="mname">面积：</label>
+                                                                    <input type="text" name="mname" id="m" readonly="true" style="height: 20px;">
+                                                                    </form> 
+                                                                  </body>
+                                                                  <script>
+  var w=document.getElementById('w');
+  var h=document.getElementById('h');
+  var kk=document.getElementById('kk');
+  var gg=document.getElementById('gg');
+  var z=document.getElementById('z');
+  var m=document.getElementById('m');
+  var btn=document.getElementById('btn');
+  var re=/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+  function roundFractional(x, n) {
+    return Math.round(x * Math.pow(10, n)) / Math.pow(10, n);
+                          
+  }
+  w.onblur=function(){
+      if(w.value==""){      
+            kk.innerHTML="请填写必要信息";
+            w.focus();
+            z.value="";
+            m.value="";
+          }
+      else if(!re.test(w.value)){
+              kk.innerHTML="信息为正数格式";
+                    w.focus();
+                        
+      }
+        
+  };
+  h.onblur=function(){
+      if(h.value==""){      
+            gg.innerHTML="请填写必要信息";
+            h.focus();
+            z.value="";
+            m.value=""; 
+          }
+      else if(!re.test(h.value)){
+              gg.innerHTML="信息为正数格式";
+                    h.focus();
+                        
+      }
+        
+  };
+  btn.onclick=function(){
+      if(w.value==""){      
+            kk.innerHTML="请填写宽度！";
+      }else if(w.value!==""){
+        if(!re.test(w.value)){
+                  kk.innerHTML="信息为正数格式";
+                        
+        }else{
+                  kk.innerHTML="";
+                        
+        }
+            
+      }
+           
+          if(h.value==""){      
+                gg.innerHTML="请填写高度！";
+          
+          }else if(h.value!==""){
+            if(!re.test(h.value)){
+                      gg.innerHTML="信息为正数格式";
+                            
+            }
+                
+          }
+               
+          if(re.test(h.value)&&re.test(w.value)){
+              gg.innerHTML="";
+              kk.innerHTML="";
+              z.value=roundFractional((w.value)*2+(h.value)*2,1);
+              m.value=roundFractional(w.value*h.value,2);
+                                        
+          } 
+            
+  }
+window.onload=function(){
+      w.focus();
+        
+}
+                                                                    </script>
+                                                                    </html>
