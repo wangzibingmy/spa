@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<title>二进熵函数</title>
+	<script src="echarts.min.js"></script>
+	<style type="text/css">
+		html, body {
+		  margin: 0;
+		  padding: 0;
+		  width: 100%;
+		  height: 100%;
+		}
+		#main {
+		  width: 70%;
+		  height: 80%;
+		  margin: 30px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="main"></div>
+<script>
+var main=document.getElementById('main');
+
+window.onload=function() {
+  	var xData = [],
+    	yData = [];
+
+  	for(var i = 0; i <= 1; i += 0.1) {
+    	xData.push(roundFractional(i, 1));
+    	yData.push(roundFractional(h(i), 2));
+  	}
+
+  	var myChart = echarts.init(main);
+
+  	var option = {
+	    title: {
+	      text: '二进熵函数曲线'
+	    },
+	    tooltip: {},
+	    legend: {
+	      data:['信息量']
+	    },
+	    xAxis: {
+	      data: xData
+	    },
+	    yAxis: {},
+	    series: [{
+	      name: '信息量',
+	      type: 'line',
+	      smooth: 'true',
+	      data: yData
+    	}]
+  	};
+	function roundFractional(x, n) {
+	    return Math.round(x * Math.pow(10, n)) / Math.pow(10, n);
+	}
+  	function h(p) {
+    	return -1 * (plog(p) + plog(1 - p));
+  	}
+  	function plog(p) {
+    	return (p === 0)? 0 : p * Math.log2(p);
+  	}
+  	myChart.setOption(option);
+};
+</script>
+</body>
+</html>
